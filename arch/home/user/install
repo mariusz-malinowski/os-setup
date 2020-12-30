@@ -21,15 +21,10 @@ link_file ".Xresources"
 
 link_file ".config/alacritty"
 link_file ".config/bspwm"
-link_file ".config/dconf"
-link_file ".config/dunst"
 link_file ".config/gtk-2.0"
 link_file ".config/gtk-3.0"
 link_file ".config/mpd"
-link_file ".config/neofetch"
-link_file ".config/nitrogen"
 link_file ".config/polybar"
-link_file ".config/spacefm"
 link_file ".config/sxhkd"
 
 # .local
