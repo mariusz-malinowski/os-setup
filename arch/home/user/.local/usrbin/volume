@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+VOLUME=$(echo "$(amixer get Master)" | grep -o "\[[0-9]\+%\]" | sed 's/[^0-9]*//g')
+
+if [ "$1" == "toggle" ]; then
+  if [ $VOLUME -lt 1 ]; then
+    VOLUME=100
+  else
+    VOLUME=0
+  fi
+else
+  SIGN=${1:0:1}
+  STEP=${1:1}
+
+  [ "$SIGN" == "+" ] && VOLUME=$(( VOLUME + STEP ))
+  [ "$SIGN" == "-" ] && VOLUME=$(( VOLUME - STEP ))
+  [ $VOLUME -gt 100 ] && VOLUME=100
+  [ $VOLUME -lt 0  ] && VOLUME=0
+fi
+
+amixer -q sset Master $VOLUME%
+

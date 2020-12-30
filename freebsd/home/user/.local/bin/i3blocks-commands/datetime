@@ -1,0 +1,32 @@
+#!/bin/sh
+
+COLOR="#ffffff"
+FORMAT="+%H:%M:%S %A %d.%m.%Y"
+
+date "$FORMAT"
+date "$FORMAT"
+echo "$COLOR"
+
+case "$BLOCK_BUTTON" in
+  1|2|3) 
+
+  WIDTH=300
+  HEIGHT=200
+  POS_X=$(($BLOCK_X - $WIDTH))
+  POS_Y=$(($BLOCK_Y + 12))
+
+  yad \
+    --calendar \
+    --show-weeks \
+    --width=$WIDTH \
+    --height=$HEIGHT \
+    --posx=$POS_X \
+    --posy=$POS_Y \
+    --border=0 \
+    --on-top \
+    --skip-taskbar \
+    --splash \
+    --close-on-unfocus \
+    --no-buttons \
+    > /dev/null
+esac

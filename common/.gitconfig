@@ -1,0 +1,11 @@
+[user]
+	name = set name here
+	email = set email here
+[core]
+	autocrlf = input
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool

@@ -1,0 +1,228 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! XTerm settings
+!-------------------------------------------------------------------------------
+! #include ".Xresources.d/xterm"
+!XTerm*faceName:                         DejaVu Sans Mono:size=9
+!XTerm*faceSize:                         DejaVu Sans Mono:size=9
+!XTerm*font:              -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-15
+XTerm*font:              -misc-fixed-medium-r-normal--20-*-*-*-*-*-iso8859-15
+XTerm*foreground:        white
+XTerm*background:        black
+XTerm*title:             xterm
+XTerm*loginShell:        true
+XTerm*scrollKey:         true
+XTerm*scrollTtyKeypress: true
+XTerm*scrollTtyOutput:   false
+XTerm*scrollBar:         false
+XTerm*rightScrollBar:    false
+XTerm*jumpScroll:        true
+XTerm*multiScroll:       true
+XTerm*toolBar:           false
+XTerm*dynamicColors:     true
+XTerm*utf8:              1
+XTerm*eightBitInput:     true
+XTerm*saveLines:         32767
+XTerm*ttyModes:          erase ^H
+XTerm*selectToClipboard: true
+XTerm*visualBell:        true
+XTerm*cursorBlink:       true
+XTerm*internalBorder:    0
+XTerm*borderWidth:       0
+XTerm*metaSendsEscape:   true
+XTerm*charClass:         33:48,35:48,37:48,42:48,45-47:48,64:48,58:48,63-64:48,95:48,126:48
+! disable alt+enter, use F11 to toggle fullscreen
+! and use ctrl+shift+c/ctrl+shift+v to copy/paste
+XTerm*VT100*translations:    #override \
+        Alt <Key>Return: ignore() \n\
+        <Key>F11: fullscreen(toggle) \n\
+        Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+        Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+        Home:      string("\033[1~") \n\
+        Delete:    string("\033[3~") \n\
+        End:       string("\033[4~")
+
+Xft.autohint  : 0
+Xft.lcdfilter : lcddefault
+Xft.hintstyle : hintnone
+Xft.hinting   : 0
+Xft.antialias : 1
+Xft.rgba      : rgb
+Xcursor.size  : 16
+
+! #include ".Xresources.d/solarized"
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+! #include ".Xresources.d/urxvt"
+!! URxvt.font                 : -*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+!! URxvt.boldFont             : -*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+!! URxvt.italicFont           : -*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+!! URxvt.boldItalicfont       : -*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+
+! special
+*.foreground:   #d2d4de
+*.background:   #161821
+*.cursorColor:  #d2d4de
+
+! black
+*.color0:       #161821
+*.color8:       #6b7089
+
+! red
+*.color1:       #e27878
+*.color9:       #e98989
+
+! green
+*.color2:       #b4be82
+*.color10:      #c0ca8e
+
+! yellow
+*.color3:       #e2a478
+*.color11:      #e9b189
+
+! blue
+*.color4:       #84a0c6
+*.color12:      #91acd1
+
+! magenta
+*.color5:       #a093c7
+*.color13:      #ada0d3
+
+! cyan
+*.color6:       #89b8c2
+*.color14:      #95c4ce
+
+! white
+*.color7:       #c6c8d1
+*.color15:      #d2d4de
+
+URxvt*font                 : xft:Hack:pixelsize=16
+URxvt*boldFont             : xft:Hack:pixelsize=16
+URxvt.letterSpace          : -1
+
+URxvt.cursorBlink          : 1
+URxvt.scrollBar            : false
+URxvt.termName             : rxvt-unicode-256color
+URxvt.internalBorder       : 2
+URxvt.externalBorder       : 0
+URxvt.urgentOnBell         : true
+URxvt.intensityStyles      : true
+URxvt.depth                : 256
+URxvt.geometry             : 90x30
+URxvt.transparent          : false
+URxvt.background           : [85]#161821
+URxvt.loginShell           : true
+URxvt.visualBell           : false
+URxvt*scrollTtyOutput      : false
+URxvt*scrollWithBuffer     : true
+URxvt*scrollTtyKeypress    : true
+URxvt*saveLines            : 10000
+
+!! install x11/urxvt-perls to get the extensions
+URxvt.perl-ext-common      : default,keyboard-select,clipboard,url-select
+URxvt.keysym.C-C           : perl:clipboard:copy
+URxvt.keysym.C-V           : perl:clipboard:paste
+URxvt.keysym.M-u           : perl:url-select:select_next
+URxvt.url-select.underline : true
+!! replace with path to your preferred browser
+URxvt.url-select.launcher  : /usr/local/bin/firefox
+
+!! keep X selection buffer and clipboard separate
+URxvt.clipboard.autocopy   : false
+
+!! disable the ctrl+shift functionality - I always press it on accident
+URxvt.iso14755             : false
+
+! Scrollbar
+URxvt.scrollStyle          : rxvt
+URxvt.scrollBar            : true
+
+! Perl extensions
+URxvt.perl-ext-common:      default,url-select,tabbed
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  firefox -new-tab
+URxvt.url-select.underline: true
+
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+
+!-------------------------------------------------------------------------------
+! rofi settings
+!-------------------------------------------------------------------------------
+! #include ".Xresources.d/rofi"
+rofi.separator-style : solid
+rofi.font            : Terminus (TTF) 9
+rofi.lines           : 20
+rofi.width           : 800

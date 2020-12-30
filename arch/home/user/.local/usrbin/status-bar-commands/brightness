@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+OUTPUT=$1
+
+case $BLOCK_BUTTON in
+	1) brightness $OUTPUT -5 ;;
+	3) brightness $OUTPUT +5 ;;
+  2) brightness $OUTPUT +100 ;;
+esac
+
+LEVEL=$( xrandr --verbose --current | grep ^"$OUTPUT" -A5 | tail -n1 )
+LEVEL=${LEVEL##* }
+LEVEL=$(echo "100*$LEVEL" | bc)
+LEVEL=${LEVEL%.*}
+
+
+echo " $LEVEL%"

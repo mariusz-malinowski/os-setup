@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+RESIZE_EXTENT="2 px or 2 ppt"
+
+i3msgresize() {
+  i3-msg resize $1 $2 $RESIZE_EXTENT \
+    | grep '"success":true' \
+    || i3-msg resize $3 $4 $RESIZE_EXTENT
+}
+
+case $1 in
+  right)
+    i3msgresize grow left shrink right
+    ;;
+  left)
+    i3msgresize grow right shrink left 
+    ;;
+  down)
+    i3msgresize grow down shrink up 
+    ;;
+  up)
+    i3msgresize grow up shrink down
+    ;;
+esac
+

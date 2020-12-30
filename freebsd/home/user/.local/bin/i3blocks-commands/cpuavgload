@@ -1,0 +1,18 @@
+#!/bin/sh
+
+COLOR="#ffffff"
+CPU_LOAD=$(sysctl -n vm.loadavg | awk '{print $(NF-1)}' | cut -d ' ' -f 3,6)
+URGENT_COLOR="#ff0000"
+URGENT_LOAD=0.9
+URGENT_EXPRESSION="if ( $CPU_LOAD > $URGENT_LOAD ) 1 else 0"
+
+if [ ! -z "$CPU_LOAD" -a "$CPU_LOAD" != " " ]; then
+  echo "$CPU_LOAD"
+  echo "$CPU_LOAD"
+
+  if [ $(bc -l -e "$URGENT_EXPRESSION") == 1 ]; then
+    echo "$URGENT_COLOR"
+  else
+    echo "$COLOR"
+  fi
+fi   

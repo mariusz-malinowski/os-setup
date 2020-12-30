@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+case $BLOCK_BUTTON in
+	1) volume -5 ;;
+	3) volume +5 ;;
+	2) volume toggle ;;
+esac
+
+VOLUME=$(echo "$(amixer get Master)" | grep -o "\[[0-9]\+%\]" | sed 's/[^0-9]*//g')
+if [ "$VOLUME" -gt "70" ]; then
+	ICON=""
+elif [ "$VOLUME" -lt "1" ]; then
+	ICON=""
+elif [ "$VOLUME" -lt "30" ]; then
+	ICON=""
+else
+	ICON=""
+fi
+
+echo "$ICON $VOLUME%"
+

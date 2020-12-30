@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ "${BLOCK_BUTTON}" -eq 1 ]; then
+  mixer -S vol -5
+elif [ "${BLOCK_BUTTON}" -eq 2 ]; then
+  mixer -S vol mute
+elif [ "${BLOCK_BUTTON}" -eq 3 ]; then
+  mixer -S vol +5
+fi
+
+COLOR="#ffffff"
+URGENT_COLOR="#ff0000"
+VOLUME=$(mixer vol | cut -c39-42 | tr -d ':')
+
+if [ "${VOLUME}" -gt 0 ]; then
+  echo " ${VOLUME}%"
+  echo " ${VOLUME}%"
+  echo "$COLOR"
+else
+  echo " "
+  echo " "
+  echo "$URGENT_COLOR"
+fi   

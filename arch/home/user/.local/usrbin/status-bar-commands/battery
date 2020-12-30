@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# dependencies: fonts-font-awesome
+
+capacity=$(cat /sys/class/power_supply/"$1"/capacity) || echo 100
+status=$(cat /sys/class/power_supply/"$1"/status) || echo ""
+
+if [ "$capacity" -ge 90 ]; then
+  battery=
+elif [ "$capacity" -ge 75 ]; then
+  battery=
+elif [ "$capacity" -ge 50 ]; then
+  battery=
+elif [ "$capacity" -ge 25 ]; then
+  battery=
+else
+  battery=
+	icon=" "
+fi
+
+if [[ $status =~ "Charging" ]]; then
+  if [[ $status =~ "Not Charging" ]]; then
+    icon=" "
+  else
+    icon=" "
+  fi
+fi
+
+printf "%s  %s%s\n" \
+  "$battery"\
+  "$(echo "$capacity" | sed -e 's/$/%/')"\
+  "$icon"
+

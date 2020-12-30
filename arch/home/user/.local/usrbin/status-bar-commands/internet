@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+WIFI_INTERFACE=$(iw dev | awk '$1=="Interface"{print $2}')
+WIFI_NAME=$(iwgetid --raw)
+case $BLOCK_BUTTON in
+  1) $TERMINAL -e nmtui ;;
+  2) notify-send --icon=none echo "$(nmcli connection show --active)" ;;
+  3) $TERMINAL -e nm-connection-editor ;;
+esac
+
+VPN=$(nmcli -f TYPE connection show --active)
+case "$VPN" in
+  *vpn*) VPN=" vpn " ;;
+  *) VPN="" ;;
+esac
+
+WIFI_ICON=""
+WIFI_STATE=$(cat /sys/class/net/$(echo $WIFI_INTERFACE)/operstate)
+if [ $WIFI_STATE = 'up' ]; then
+  WIFI_ICON=$(grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70) "%" }')
+fi
+
+echo "$WIFI_ICON $VPN $(cat /sys/class/net/e*/operstate | sed "s/down//;s/up//")"

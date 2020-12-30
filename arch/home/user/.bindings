@@ -1,0 +1,15 @@
+#!/bin/sh
+
+export WM="bspwm" ; # WM="i3wm"
+export EDITOR="vim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export PAGER="less"
+export FILE="spacefm"
+export READER="zathura"
+export COLORTERM="truecolor"
+
+# export JAVA_11_HOME="$HOME/openjdk-11"
+# export JAVA_8_HOME="$HOME/openjdk-8"
+# export JAVA_HOME="$JAVA_11_HOME"
+

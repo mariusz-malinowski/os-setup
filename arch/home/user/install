@@ -1,0 +1,39 @@
+#!/bin/sh
+
+REPO_PATH=$(pwd)
+
+link_file() {
+  [ -d $HOME/$1 ] && rm -rf $HOME/$1
+  ln -sf $REPO_PATH/$1 $HOME/$1
+}
+
+# home
+link_file ".aliases"
+link_file ".bash_completion"
+link_file ".bash_profile"
+link_file ".bashrc"
+link_file ".profile"
+link_file ".xinitrc"
+link_file ".Xresources"
+
+# .config
+[ ! -d $HOME/.config ] && mkdir $HOME/.config
+
+link_file ".config/alacritty"
+link_file ".config/bspwm"
+link_file ".config/dconf"
+link_file ".config/dunst"
+link_file ".config/gtk-2.0"
+link_file ".config/gtk-3.0"
+link_file ".config/mpd"
+link_file ".config/neofetch"
+link_file ".config/nitrogen"
+link_file ".config/polybar"
+link_file ".config/spacefm"
+link_file ".config/sxhkd"
+
+# .local
+[ ! -d $HOME/.local ] && mkdir $HOME/.local
+
+link_file ".local/usrbin"
+

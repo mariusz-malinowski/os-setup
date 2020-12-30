@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ "${BLOCK_BUTTON}" -eq 1 ]; then
+  setxkbmap pl
+elif [ "${BLOCK_BUTTON}" -eq 2 ]; then
+  setxkbmap us
+elif [ "${BLOCK_BUTTON}" -eq 3 ]; then
+  setxkbmap de
+fi
+
+COLOR="#ffffff"
+
+echo "$(xkb-switch -p | cut -c 1-2)"
+echo "$(xkb-switch -p | cut -c 1-2)"
+echo "$COLOR"

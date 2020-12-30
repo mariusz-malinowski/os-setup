@@ -1,0 +1,12 @@
+#!/bin/sh
+
+USED="$(freecolor -m -o | head -n 2 | tail -n 1 | cut -c24-29)"
+USED=$(echo "scale=2; ${USED}/1024" | bc -l)
+TOTAL="$(freecolor -m -o | head -n 2 | tail -n 1 | cut -c14-18)"
+TOTAL=$(echo "scale=2; ${TOTAL}/1024" | bc -l)
+RAM_MSG="${USED}G/${TOTAL}G"
+COLOR="#ffffff"
+
+echo "${RAM_MSG}"
+echo "${RAM_MSG}"
+echo "$COLOR"

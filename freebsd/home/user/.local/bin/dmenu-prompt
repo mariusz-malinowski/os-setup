@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+# Gives a dmenu prompt labeled with $1 to perform command $2.
+# Example:
+# `./prompt "Do you want to shutdown?" "shutdown -h now"`
+
+[ "$(printf "No\\nYes" | dmenu \
+  -i \
+  -b \
+  -p "$1" \
+  -sb "#cc241d" \
+  -nb "#9d0006" \
+  -sf "#bdae93" \
+  -nf "#928374" \
+  -fn $DMENU_FONT \
+  )" = "Yes" ] && $2

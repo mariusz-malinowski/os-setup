@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+# Handling for variable SUDO_ASKPASS
+# Example:
+# export SUDO_ASKPASS="/patht/to/this/command/dmenu_sudoaskpass"
+
+dmenu \
+  -b \
+  -p "$1" \
+  -sb "#b57614" \
+  -nb "#3c3836" \
+  -sf "#d5c4a1" \
+  -nf "#3c3836" \
+  -fn $DMENU_FONT \
+  <&- && echo
+

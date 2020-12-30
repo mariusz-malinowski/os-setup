@@ -1,0 +1,15 @@
+#!/bin/sh
+
+DEV_PATH=$1
+MOUNT_UID=$(id -u $(whoami))
+MOUNT_GID=$(id -g $(whoami))
+
+if [ ! -d "${HOME}/usb" ]; then 
+  mkdir "${HOME}/usb"
+  chown $(whoami) "${HOME}/usb"
+fi
+
+[ ! $(command -v ntfs-3g) ] && echo "Command ntfs-3g not installed, may cause problems with access to NTFS disks"
+
+sudo mount -o dmask=022,fmask=133,uid=${MOUNT_UID},gid=${MOUNT_GID},iocharset=utf8 ${DEV_PATH} ${HOME}/usb
+

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+REPO_PATH=$(pwd)
+
+link_file() {
+  [ -d $HOME/$1 ] && rm -rf $HOME/$1
+  ln -sf $REPO_PATH/$1 $HOME/$1
+}
+
+link_file ".vimrc"
+
+cp -r .vim "${HOME}/"
