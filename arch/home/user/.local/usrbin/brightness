@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+OUTPUT=$1
+SIGN=${2:0:1}
+STEP=${2:1}
+
+LEVEL=$( xrandr --verbose --current | grep ^"$OUTPUT" -A5 | tail -n1 )
+LEVEL=${LEVEL##* }
+LEVEL=$(echo "100*$LEVEL" | bc)
+LEVEL=${LEVEL%.*}
+[ "$SIGN" == "+" ] && LEVEL=$(( LEVEL + STEP ))
+[ "$SIGN" == "-" ] && LEVEL=$(( LEVEL - STEP ))
+[ $LEVEL -gt 100 ] && LEVEL=100
+[ $LEVEL -lt 0  ] && LEVEL=0
+LEVEL=$(echo "scale=2; $LEVEL/100" | bc | sed 's/^\./0./')
+
+xrandr --output "$OUTPUT" --brightness "$LEVEL"
+

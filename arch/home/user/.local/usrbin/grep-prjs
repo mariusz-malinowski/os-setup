@@ -1,0 +1,15 @@
+#!/bin/sh
+
+grep \
+  --exclude-dir=node_modules \
+  --exclude-dir=logmon_ece-team-configs \
+  --exclude-dir=.git \
+  --exclude-dir=scala \
+  --exclude-dir=target \
+  --exclude-dir=build \
+  --exclude-dir=.idea \
+  --exclude-dir=out \
+  --exclude-dir=logs \
+  --exclude-dir=jest_* \
+  --exclude-dir=assets \
+  --color=auto -rnI ./ -e "$1"

@@ -26,7 +26,7 @@ if [[ $status =~ "Charging" ]]; then
   fi
 fi
 
-printf "%s  %s%s\n" \
+printf "%s %s%s\n" \
   "$battery"\
   "$(echo "$capacity" | sed -e 's/$/%/')"\
   "$icon"

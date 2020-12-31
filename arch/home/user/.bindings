@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export WM="bspwm" ; # WM="i3wm"
+# export WM="bspwm"
+export WM="i3wm"
 export EDITOR="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
@@ -8,6 +9,8 @@ export PAGER="less"
 export FILE="spacefm"
 export READER="zathura"
 export COLORTERM="truecolor"
+export LOCAL_BIN="$HOME/.local/usrbin"
+export MAIN_MONITOR="LVDS1" ; # eDP-1-1
 
 # export JAVA_11_HOME="$HOME/openjdk-11"
 # export JAVA_8_HOME="$HOME/openjdk-8"

@@ -3,7 +3,7 @@
 COLOR="#ffffff"
 FORMAT="+%H:%M:%S %A %d.%m.%Y"
 
-echo "   $(date "$FORMAT")"
+echo " $(date "$FORMAT")"
 echo "$COLOR"
 
 case "$BLOCK_BUTTON" in

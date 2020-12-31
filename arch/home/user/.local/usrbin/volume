@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VOLUME=$(echo "$(amixer get Master)" | grep -o "\[[0-9]\+%\]" | sed 's/[^0-9]*//g')
+VOLUME=$(pamixer --get-volume)
 
 if [ "$1" == "toggle" ]; then
   if [ $VOLUME -lt 1 ]; then
@@ -18,5 +18,4 @@ else
   [ $VOLUME -lt 0  ] && VOLUME=0
 fi
 
-amixer -q sset Master $VOLUME%
-
+pactl set-sink-volume @DEFAULT_SINK@ ${VOLUME}%

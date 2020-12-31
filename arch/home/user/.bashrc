@@ -1,3 +1,5 @@
+#/usr/bin/env bash
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
@@ -11,5 +13,5 @@ shopt -s checkwinsize ; # check the window size after each command and, if neces
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-source ~/.bash_completion
+[ -f "$HOME/.bash_completion" ] && source "$HOME/.bash_completion"
 

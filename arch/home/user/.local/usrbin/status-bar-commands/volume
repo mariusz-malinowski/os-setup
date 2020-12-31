@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 case $BLOCK_BUTTON in
 	1) volume -5 ;;
@@ -6,7 +6,7 @@ case $BLOCK_BUTTON in
 	2) volume toggle ;;
 esac
 
-VOLUME=$(echo "$(amixer get Master)" | grep -o "\[[0-9]\+%\]" | sed 's/[^0-9]*//g')
+VOLUME=$(pamixer --get-volume)
 if [ "$VOLUME" -gt "70" ]; then
 	ICON=""
 elif [ "$VOLUME" -lt "1" ]; then

@@ -1,0 +1,4 @@
+super + alt + l
+  i3lock -e -c 444444 -i $HOME/wallpapers/agriculture-1845835_1920.png
+super + alt + e
+  dmenu-prompt "Exit i3wm?" "i3-msg exit"
