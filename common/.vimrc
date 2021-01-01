@@ -8,12 +8,8 @@
 
 " turn off compatibility mode with vi
 set nocompatible
-
 " force vim to use 256 colors
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-  set t_Co=256
-endif
-
+set t_Co=256
 set fileencoding=utf-8
 
 " turn filetype detection off and, even if it's not strictly necessary, disable loading of indent scripts and filetype plugins

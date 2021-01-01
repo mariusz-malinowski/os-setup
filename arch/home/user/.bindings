@@ -10,7 +10,8 @@ export FILE="spacefm"
 export READER="zathura"
 export COLORTERM="truecolor"
 export LOCAL_BIN="$HOME/.local/usrbin"
-export MAIN_MONITOR="LVDS1" ; # eDP-1-1
+export MAIN_MONITOR="LVDS1"
+# export MAIN_MONITOR="eDP-1-1"
 
 # export JAVA_11_HOME="$HOME/openjdk-11"
 # export JAVA_8_HOME="$HOME/openjdk-8"

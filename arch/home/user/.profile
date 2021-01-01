@@ -1,7 +1,10 @@
 #!/bin/sh
 
+[ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+[ -f "$HOME/.bindings" ] && source "$HOME/.bindings"
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
-[ -d "$HOME/.local/usrbin" ] && PATH="$PATH:$HOME/.local/usrbin"
+[ -d "$LOCAL_BIN" ] && PATH="$PATH:$LOCAL_BIN"
 export PATH
 
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
@@ -19,11 +22,7 @@ export LC_TIME=pl_PL.UTF-8
 export MOZ_GTK_TITLEBAR_DECORATION=client
 export AWT_TOOLKIT=XToolkit ; # Use XToolkit in java applications
 export DMENU_FONT="pango:monospace:bold:pixelsize=24"
-export SUDO_ASKPASS="$HOME/.local/bin/dmenu-sudoaskpass"
-
-[ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
-[ -f "$HOME/.bindings" ] && source "$HOME/.bindings"
-[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+export SUDO_ASKPASS="$LOCAL_BIN/dmenu-sudoaskpass"
 
 if [ "$(tty)" = "/dev/tty1" ]; then
   #pgrep bspwm || startx "$XDG_CONFIG_HOME/X11/xinitrc"

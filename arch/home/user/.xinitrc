@@ -18,25 +18,24 @@ xsetroot -solid "#333333" ; # Set background color
 #xrandr   --output DisplayPort-0 --auto --output DisplayPort-1 --auto --right-of DisplayPort-0
 xrandr   --output LVDS1 --auto
 nitrogen --restore
-pgrep -x picom  > /dev/null || picom &
+pgrep -x picom  > /dev/null || picom --config $XDG_CONFIG_HOME/picom/picom.conf &
 pgrep -x dunst  > /dev/null || dunst &
-pgrep -x sxhkd  > /dev/null || sxhkd &
 
 case $WM in
   i3wm)
-    sxhkd $XDG_CONFIG_HOME/sxhkd/i3wm-sxhkdrc &
+    pgrep -x sxhkd > /dev/null || sxhkd -c $XDG_CONFIG_HOME/sxhkd/sxhkd.conf $XDG_CONFIG_HOME/sxhkd/i3wm-sxhkd.conf &
     # mkdir -p $XDG_DATA_HOME/i3wm
     # START_DATE="$(date +%Y%m%d%H%M%S)"
     # echo "Started at $DATE" >> $XDG_DATA_HOME/i3wm/i3wm.$(echo $START_DATE).log
-    # pgrep -x i3 > /dev/null || exec i3 -V -d all -c $XDG_CONFIG_HOME/i3wm/config >> $XDG_DATA_HOME/i3wm/i3wm.$(echo $START_DATE).log
-    pgrep -x i3 > /dev/null || exec i3 -c $XDG_CONFIG_HOME/i3wm/config
+    # pgrep -x i3   > /dev/null || exec i3 -V -d all -c $XDG_CONFIG_HOME/i3wm/config >> $XDG_DATA_HOME/i3wm/i3wm.$(echo $START_DATE).log
+    pgrep -x i3    > /dev/null || exec i3 -c $XDG_CONFIG_HOME/i3wm/i3wm.conf
   ;;
   bspwm)
-    sxhkd $XDG_CONFIG_HOME/sxhkd/bspwm-sxhkdrc &
-    pgrep -x polybar  > /dev/null || polybar -r x220 &
-    #pgrep -x polybar > /dev/null || polybar first &
-    #pgrep -x polybar > /dev/null || polybar second &
-    pgrep -x bspwm    > /dev/null || exec bspwm
+    pgrep -x sxhkd   > /dev/null || sxhkd -c $XDG_CONFIG_HOME/sxhkd/sxhkd.conf $XDG_CONFIG_HOME/sxhkd/bspwm-sxhkd.conf &
+    pgrep -x polybar > /dev/null || polybar -r x220 -c $XDG_CONFIG_HOME/polybar/polybar.conf &
+    #pgrep -x polybar > /dev/null || polybar -r first -c $XDG_CONFIG_HOME/polybar/polybar.conf &
+    #pgrep -x polybar > /dev/null || polybar -r second -c $XDG_CONFIG_HOME/polybar/polybar.conf &
+    pgrep -x bspwm   > /dev/null || exec bspwm
   ;;
 esac
 
