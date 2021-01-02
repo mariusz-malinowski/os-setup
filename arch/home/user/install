@@ -8,6 +8,7 @@ link_file() {
 }
 
 # home
+[ -f $HOME/.bash_profile ] && mv $HOME/.bash_profile $HOME/.bash_profile.backup
 link_file ".aliases"
 link_file ".bash_completion"
 link_file ".bashrc"

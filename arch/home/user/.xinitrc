@@ -1,6 +1,11 @@
 #!/bin/sh
 
-[ -f  "$HOME/.Xresources" ] && xrdb "$HOME/.Xresources"
+[ -f  "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
+# nasty hack to inject env vars into i3wm config
+xrdb -merge <<EOF
+i3wm.main_monitor: $MAIN_MONITOR
+i3wm.font_size: $FONT_SIZE
+EOF
 
 # check man xkeyboard-config
 setxkbmap pl,de \
@@ -15,8 +20,7 @@ xset -b ; # Disable bell
 xsetroot -solid "#333333" ; # Set background color
 # xsetroot -cursor_name left_ptr
 
-#xrandr   --output DisplayPort-0 --auto --output DisplayPort-1 --auto --right-of DisplayPort-0
-xrandr   --output LVDS1 --auto
+xrandr $XRANDR_SETUP
 nitrogen --restore
 pgrep -x picom  > /dev/null || picom --config $XDG_CONFIG_HOME/picom/picom.conf &
 pgrep -x dunst  > /dev/null || dunst &
