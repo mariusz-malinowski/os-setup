@@ -1,0 +1,34 @@
+# sudo pacman -S docker-compose
+# sudo pacman -S erlang
+# sudo pacman -S atom
+# sudo pacman -S chromium
+# sudo pacman -S mkcer
+# sudo pacman -S nginx-mainline
+
+# sudo pacman -S nvidia nvidia-utils
+
+sudo pacman -S man-db 
+sudo pacman -S efibootmgr grub dosfstools mtools 
+sudo pacman -S networkmanager
+sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-jack pavucontrol pamixer
+sudo pacman -S bluez bluez-utils pulseaudio-bluetooth
+sudo pacman -S openssh git 
+sudo pacman -S xorg-server xorg-xinit xorg-xset xorg-xrandr xorg-xsetroot xorg-xwininfo xorg-xprop xdotool numlockx 
+sudo pacman -S ttf-dejavu noto-fonts ttf-ubuntu-font-family
+sudo pacman -S picom bspwm sxhkd i3-gaps i3blocks i3lock polybar rofi dmenu dunst yad nitrogen
+sudo pacman -S python python-pip 
+sudo pacman -S alacritty neofetch ntfs-3g sxiv unzip iw keepassxc bc
+sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
+sudo pacman -S ffmpeg mpv
+sudo pacman -S firefox
+
+# AUR
+# makepkg -sic
+# git clone https://aur.archlinux.org/yay.git
+# git clone https://aur.archlinux.org/brave-bin.git
+# git clone https://aur.archlinux.org/mycli.git
+# git clone https://aur.archlinux.org/aic94xx-firmware.git
+# git clone https://aur.archlinux.org/wd719x-firmware.git
+#
+# polybar spacefm slack-desktop
+#
