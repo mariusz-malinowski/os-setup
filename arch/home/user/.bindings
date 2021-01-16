@@ -11,11 +11,13 @@ export READER="zathura"
 export COLORTERM="truecolor"
 export FONT_SIZE=14
 export LOCAL_BIN="$HOME/.local/usrbin"
+
 # export MAIN_MONITOR="eDP-1"
-export MAIN_MONITOR="LVDS1"
-# export XRANDR_SETUP="--output DisplayPort-0 --auto --output DisplayPort-1 --auto --right-of DisplayPort-0"
 # export XRANDR_SETUP="--output $MAIN_MONITOR --mode 1920x1080"
-export XRANDR_SETUP="--output $MAIN_MONITOR --auto"
+# export MAIN_MONITOR="LVDS1"
+# export XRANDR_SETUP="--output $MAIN_MONITOR --auto"
+export MAIN_MONITOR="DisplayPort-1"
+export XRANDR_SETUP="--output DisplayPort-0 --auto --output $MAIN_MONITOR --auto --right-of DisplayPort-0"
 
 # export JAVA_11_HOME="$HOME/openjdk-11"
 # export JAVA_8_HOME="$HOME/openjdk-8"

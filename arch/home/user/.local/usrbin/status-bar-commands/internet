@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 WIFI_INTERFACE=$(iw dev | awk '$1=="Interface"{print $2}')
-WIFI_NAME=$(iwgetid --raw)
+WIFI_NAME=$(iw dev $WIFI_INTERFACE link | awk '/SSID/{print $2}')
 case $BLOCK_BUTTON in
   1) $TERMINAL -e nmtui ;;
-  2) notify-send --icon=none echo "$(nmcli connection show --active)" ;;
+  2) notify-send --icon=none echo "$WIFI_NAME: $(nmcli connection show --active)" ;;
   3) $TERMINAL -e nm-connection-editor ;;
 esac
 

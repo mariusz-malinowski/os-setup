@@ -14,10 +14,11 @@ sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-jack pavucontrol pamixer
 sudo pacman -S bluez bluez-utils pulseaudio-bluetooth
 sudo pacman -S openssh git 
 sudo pacman -S xorg-server xorg-xinit xorg-xset xorg-xrandr xorg-xsetroot xorg-xwininfo xorg-xprop xdotool numlockx 
-sudo pacman -S ttf-dejavu noto-fonts ttf-ubuntu-font-family
-sudo pacman -S picom bspwm sxhkd i3-gaps i3blocks i3lock polybar rofi dmenu dunst yad nitrogen
+sudo pacman -S ttf-dejavu noto-fonts ttf-ubuntu-font-family ttf-font-awesome
+sudo pacman -S picom bspwm sxhkd i3-gaps i3blocks i3lock rofi dmenu dunst yad nitrogen
 sudo pacman -S python python-pip 
-sudo pacman -S alacritty neofetch ntfs-3g sxiv unzip iw keepassxc bc
+sudo pacman -S iw nm-connection-editor
+sudo pacman -S alacritty neofetch ntfs-3g sxiv unzip keepassxc bc
 sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
 sudo pacman -S ffmpeg mpv
 sudo pacman -S firefox
@@ -29,6 +30,8 @@ sudo pacman -S firefox
 # git clone https://aur.archlinux.org/mycli.git
 # git clone https://aur.archlinux.org/aic94xx-firmware.git
 # git clone https://aur.archlinux.org/wd719x-firmware.git
+# git clone https://aur.archlinux.org/ttf-unifont.git
 #
 # polybar spacefm slack-desktop
 #
+# pip install wheel i3-cycle
