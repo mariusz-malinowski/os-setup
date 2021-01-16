@@ -17,6 +17,7 @@ link_file ".xinitrc"
 link_file ".Xresources"
 
 cp $REPO_PATH/.bindings $HOME/
+touch "$HOME/.bashrc_aux"
 
 # .config
 [ ! -d $HOME/.config ] && mkdir $HOME/.config

@@ -19,7 +19,8 @@ export LC_TIME=pl_PL.UTF-8
 # export HISTFILE="${XDG_DATA_HOME}/bash/history"
 # export LESSHISTFILE="${XDG_DATA_HOME}/.less-history"
 
-export MOZ_GTK_TITLEBAR_DECORATION=client
+#export MOZ_GTK_TITLEBAR_DECORATION=client
+export MOZ_X11_EGL=1
 export AWT_TOOLKIT=XToolkit ; # Use XToolkit in java applications
 export DMENU_FONT="pango:monospace:bold:pixelsize=24"
 export SUDO_ASKPASS="$LOCAL_BIN/dmenu-sudoaskpass"

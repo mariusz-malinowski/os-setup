@@ -15,3 +15,14 @@ shopt -s checkwinsize ; # check the window size after each command and, if neces
 
 [ -f "$HOME/.bash_completion" ] && source "$HOME/.bash_completion"
 
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+  ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+  source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+[ -s "$HOME/.bashrc_aux" ] && source $HOME/.bashrc_aux
+
+# end of .bashrc
+
