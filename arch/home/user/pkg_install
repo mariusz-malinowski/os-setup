@@ -1,9 +1,11 @@
+# sudo pacman -S docker
 # sudo pacman -S docker-compose
-# sudo pacman -S erlang
 # sudo pacman -S atom
 # sudo pacman -S chromium
 # sudo pacman -S mkcer
 # sudo pacman -S nginx-mainline
+# asdf -> erlang, elixir, ruby, nodejs, yarn, gcloud, kubectl, helm
+# pip install -U mycli
 
 # sudo pacman -S nvidia nvidia-utils
 
@@ -18,10 +20,11 @@ sudo pacman -S ttf-dejavu noto-fonts ttf-ubuntu-font-family ttf-font-awesome
 sudo pacman -S picom bspwm sxhkd i3-gaps i3blocks i3lock rofi dmenu dunst yad nitrogen
 sudo pacman -S python python-pip 
 sudo pacman -S iw nm-connection-editor
-sudo pacman -S alacritty neofetch ntfs-3g sxiv unzip keepassxc bc
+sudo pacman -S alacritty neofetch ntfs-3g sxiv unzip gzip keepassxc bc wget
 sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
 sudo pacman -S ffmpeg mpv
 sudo pacman -S firefox
+sudo pacman -S keepassxc
 
 # AUR
 # makepkg -sic

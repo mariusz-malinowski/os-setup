@@ -19,7 +19,3 @@ export LOCAL_BIN="$HOME/.local/usrbin"
 export MAIN_MONITOR="DisplayPort-1"
 export XRANDR_SETUP="--output DisplayPort-0 --auto --output $MAIN_MONITOR --auto --right-of DisplayPort-0"
 
-# export JAVA_11_HOME="$HOME/openjdk-11"
-# export JAVA_8_HOME="$HOME/openjdk-8"
-# export JAVA_HOME="$JAVA_11_HOME"
-
