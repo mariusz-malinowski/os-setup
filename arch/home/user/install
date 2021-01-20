@@ -12,7 +12,6 @@ link_file() {
 link_file ".aliases"
 link_file ".bash_completion"
 link_file ".bashrc"
-link_file ".gnupg"
 link_file ".profile"
 link_file ".xinitrc"
 link_file ".Xresources"

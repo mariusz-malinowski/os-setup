@@ -12,4 +12,5 @@ grep \
   --exclude-dir=logs \
   --exclude-dir=jest_* \
   --exclude-dir=assets \
+  --exclude-dir=packs* \
   --color=auto -rnI ./ -e "$1"
