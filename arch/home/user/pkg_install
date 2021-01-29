@@ -5,6 +5,8 @@
 # sudo pacman -S mkcer
 # sudo pacman -S nginx-mainline
 # sudo pacman -S gnupg
+# sudo pacman -S inotify-tools
+# sudo pacman -S jq
 # asdf -> erlang, elixir, ruby, nodejs, yarn, gcloud, kubectl, helm
 # pip install -U mycli
 

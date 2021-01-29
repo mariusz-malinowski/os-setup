@@ -2,7 +2,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
+PS1='\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]> '
 HISTCONTROL=ignoreboth ; # don't put duplicate lines or lines starting with space in the history
 HISTSIZE=9999
 HISTFILESIZE=9999
