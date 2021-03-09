@@ -7,6 +7,7 @@
 # sudo pacman -S gnupg
 # sudo pacman -S inotify-tools
 # sudo pacman -S jq
+# sudo pacman -S bind # dns utils
 # asdf -> erlang, elixir, ruby, nodejs, yarn, gcloud, kubectl, helm
 # pip install -U mycli
 
@@ -15,7 +16,7 @@
 sudo pacman -S man-db 
 sudo pacman -S efibootmgr grub dosfstools mtools 
 sudo pacman -S networkmanager
-sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-jack pavucontrol pamixer
+sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-jack pavucontrol pamixer alsa-utils
 sudo pacman -S bluez bluez-utils pulseaudio-bluetooth
 sudo pacman -S openssh git 
 sudo pacman -S xorg-server xorg-xinit xorg-xset xorg-xrandr xorg-xsetroot xorg-xwininfo xorg-xprop xdotool numlockx 
@@ -23,9 +24,9 @@ sudo pacman -S ttf-dejavu noto-fonts ttf-ubuntu-font-family ttf-font-awesome
 sudo pacman -S picom bspwm sxhkd i3-gaps i3blocks i3lock rofi dmenu dunst yad nitrogen
 sudo pacman -S python python-pip 
 sudo pacman -S iw nm-connection-editor
-sudo pacman -S bash-completion alacritty neofetch ntfs-3g sxiv unzip gzip keepassxc bc wget
+sudo pacman -S gvim bash-completion alacritty neofetch ntfs-3g unzip gzip keepassxc bc wget
 sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
-sudo pacman -S ffmpeg mpv
+sudo pacman -S sxiv maim ffmpeg mpv exiv2
 sudo pacman -S firefox
 
 # AUR
@@ -40,3 +41,9 @@ sudo pacman -S firefox
 # polybar spacefm slack-desktop
 #
 # pip install wheel i3-cycle
+#
+
+# Networking
+# sudo pacman -S bind # dns utils
+# sudo pacman -S nmap # network exploration and security auditing
+# sudo pacman -S zennmap # gui for nmap

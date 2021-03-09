@@ -13,4 +13,7 @@ grep \
   --exclude-dir=jest_* \
   --exclude-dir=assets \
   --exclude-dir=packs* \
+  --exclude-dir=deps \
+  --exclude-dir=_build \
+  --exclude-dir=.elixir_ls \
   --color=auto -rnI ./ -e "$1"
