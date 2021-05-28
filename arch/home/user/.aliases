@@ -1,10 +1,23 @@
 #!/bin/sh
 
-alias ll='ls -alFh --color=auto --group-directories-first'
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias \
+  ll='ls -alFh --color=auto --group-directories-first' \
+  ls='ls -alFh --color=auto --group-directories-first' \
+  grep='grep --color=auto' \
+  fgrep='fgrep --color=auto' \
+  egrep='egrep --color=auto' \
+	diff="diff --color=auto" \
+	highlight="highlight --out-format=ansi" \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	mkdir="mkdir -pv"
+
+# sudo not required for some system commands
+#for x in mount umount sv pacman updatedb su ; do
+#  alias $x="sudo $x"
+#done
 
 # Put this function to your .bashrc file.
 # Usage: mv oldfilename

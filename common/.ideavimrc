@@ -1,2 +1,4 @@
 source ~/.vimrc
 set showmode
+:noremap $ $
+:noremap 0 0

@@ -7,6 +7,7 @@ link_file() {
   ln -sf $REPO_PATH/$1 $HOME/$1
 }
 
-link_file ".vimrc"
+link_file ".ideavimrc"
 
-cp -r .vim "${HOME}/"
+#link_file ".vimrc"
+#cp -r .vim "${HOME}/"

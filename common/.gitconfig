@@ -1,6 +1,13 @@
 [user]
 	name = set name here
 	email = set email here
+[merge]
+	ff = only
+	tool = vimdiff
+[pull]
+	rebase = true
+[credential]
+	helper = cache --timeout=43200
 [core]
 	autocrlf = input
 [diff]

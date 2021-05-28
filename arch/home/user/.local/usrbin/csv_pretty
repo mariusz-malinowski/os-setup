@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+# TODO: params validation
+# TODO: separator as param
+cat $1 | sed 's/;/ ;/g' | column -t -s\; | less -S
+
