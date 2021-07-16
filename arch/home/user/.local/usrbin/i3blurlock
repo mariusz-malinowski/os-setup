@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Dependencies:
+# imagemagick
+# i3lock
+# maim or scrot
+
+IMAGE=/tmp/i3blurlock.png
+
+maim -m 1 $IMAGE
+#scrot $IMAGE
+#convert $IMAGE -scale 10% -blur 0x2.5 -define filter:sigma=2.5 -scale 1000%  $IMAGE
+convert $IMAGE -scale 2.5% -resize 4000% $IMAGE
+i3lock -i $IMAGE
+rm $IMAGE
