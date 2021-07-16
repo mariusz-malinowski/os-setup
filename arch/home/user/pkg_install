@@ -10,6 +10,7 @@
 # sudo pacman -S bind # dns utils
 # sudo pacman -S minikube
 # sudo pacman -S ncurses glu mesa wxgtk2 libpng libssh unixodbc
+# sudo pacman -S git-crypt
 # asdf -> erlang, elixir, ruby, nodejs, yarn, gcloud, kubectl, helm
 # pip install -U mycli
 
@@ -28,8 +29,10 @@ sudo pacman -S python python-pip
 sudo pacman -S iw nm-connection-editor
 sudo pacman -S gvim bash-completion alacritty neofetch ntfs-3g unzip gzip keepassxc bc wget
 sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps
-sudo pacman -S sxiv maim ffmpeg mpv exiv2
+sudo pacman -S sxiv maim ffmpeg mpv exiv2 imagemagick
 sudo pacman -S firefox
+sudo pacman -S noto-fonts-emoji
+sudo pacman -S youtube-dl
 
 # AUR
 # makepkg -sic
