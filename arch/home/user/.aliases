@@ -12,7 +12,8 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
 	bc="bc -ql" \
-	mkdir="mkdir -pv"
+	mkdir="mkdir -pv" \
+  kb="setxkbmap pl,de -option grp:alt_space_toggle -option compose:rctrl   -option ctrl:nocaps"
 
 # sudo not required for some system commands
 #for x in mount umount sv pacman updatedb su ; do

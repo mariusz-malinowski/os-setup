@@ -12,6 +12,6 @@ LEVEL=$( xrandr --verbose --current | grep ^"$OUTPUT" -A5 | tail -n1 )
 LEVEL=${LEVEL##* }
 LEVEL=$(echo "100*$LEVEL" | bc)
 LEVEL=${LEVEL%.*}
-
+LEVEL=${LEVEL:-"N/A: $OUTPUT"}
 
 echo " $LEVEL%"

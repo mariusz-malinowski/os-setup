@@ -1,15 +1,18 @@
 #/usr/bin/env bash
 
+print_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-#PS1='[\u@\h \W]\$ '
-PS1='\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]> '
+PS1='\[\e[1;m\][\[\e[m\]\[\e[32m\]\D{%Y-%m-%d}\[\e[m\] \[\e[34m\]\D{%H:%M:%S}\[\e[m\]\[\e[1;m\]]\[\e[m\] \[\e[m\]\[\e[36m\]\w\[\e[m\]\[\e[1;35m\]$(print_git_branch)\[\e[m\] \n\[\e[1;34m\]λ>\[\e[m\] '
 HISTSIZE=99999
 HISTFILESIZE=999999
 HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 shopt -s checkwinsize ; # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+#PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -24,6 +27,4 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 [ -s "$HOME/.bashrc_aux" ] && source $HOME/.bashrc_aux
-
-# end of .bashrc
 
