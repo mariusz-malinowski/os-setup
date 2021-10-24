@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# A POSIX variable
+OPTIND=1 # Reset in case getopts has been used previously in the shell.
+
+interval=1
+session=1
+pause=1
+
+while getopts "h?ispc:" opt; do
+  case "$opt" in
+    h|\?)
+      echo "$0 -i 4 -s 50 -p 10"
+      echo "or"
+      echo "$0 -c 4/50/10"
+      exit 0
+      ;;
+    i)  interval=$OPTARG
+      ;;
+    s)  session=$OPTARG
+      ;;
+    s)  pause=$OPTARG
+      ;;
+    c)
+      echo $OPTARG
+      interval=$(cut -d '/' -f1 <<< $OPTARG)
+      session=$(cut -d '/' -f2 <<< $OPTARG)
+      pause=$(cut -d '/' -f3 <<< $OPTARG)
+      ;;
+  esac
+done
+
+interval_total=$interval
+clear
+while [ $interval -gt 0 ]; do
+  session_sec=$(($session * 60))
+  while [ $session_sec -gt 0 ]; do
+    echo -ne "interval: $(($interval_total - $interval + 1))/$interval_total, session: $(($session_sec / (60 * 60))):$(($session_sec / 60)):$(($session_sec % 60)) \033[0K\r"
+    sleep 1
+    : $((session_sec--))
+  done
+  pause_sec=$(($pause * 60))
+  while [ $pause_sec -gt 0 ]; do
+    echo -ne "interval: $(($interval_total - $interval + 1))/$interval_total, pause: $(($pause_sec / (60 * 60))):$(($pause_sec / 60)):$(($pause_sec % 60)) \033[0K\r"
+    sleep 1
+    : $((pause_sec--))
+  done
+  : $((interval--))
+done
