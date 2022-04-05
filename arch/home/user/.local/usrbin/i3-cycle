@@ -1,0 +1,179 @@
+#!/bin/sh
+
+get_orientation() {
+  if [ "$1" = "up" ] || [ "$1" = "down" ]; then
+    ORIENTATION="vertical"
+  else
+    ORIENTATION="horizontal"
+  fi
+}
+
+get_direction_shift() {
+  if [ "$1" = "down" ] || [ "$1" = "right" ]; then
+    DIRECTION_SHIFT=1
+  else
+    DIRECTION_SHIFT=-1
+  fi
+}
+
+find_focused_parent_id() {
+  FOCUSED_PARENT_ID=$(echo "$1" | jq -r '. | select(.nodes[].focused == true) | .id')
+}
+
+find_focused_id() {
+ FOCUSED_ID=$(echo "$1" | jq -r '. | select(.focused == true) | .id')
+}
+
+find_parent_id() {
+  PARENT_ID=$(echo "$1" | jq -r --argjson id "$2" '. | select(.nodes[].id == $id) | .id')
+}
+
+find_node() {
+  NODE_JSON=$(echo "$1" | jq --argjson id "$2" '. | select(.id == $id) | {orientation: .orientation, type: .type, nodes_length: .nodes | length, first_focus: .focus[0], child_ids: [.nodes[].id] | join(" ")}')
+  NODE_ORIENTATION=$(echo "$NODE_JSON" | jq -r '.orientation')
+  NODE_TYPE=$(echo "$NODE_JSON" | jq -r '.type')
+  NODE_CHILDREN_COUNT=$(echo "$NODE_JSON" | jq -r '.nodes_length')
+  NODE_FIRST_FOCUS=$(echo "$NODE_JSON" | jq -r '.first_focus')
+  NODE_CHILD_IDS=$(echo "$NODE_JSON" | jq -r '.child_ids')
+
+#  NODE_ORIENTATION=$(echo "$NODE_JSON" | jq -r '.orientation')
+#  NODE_TYPE=$(echo "$NODE_JSON" | jq -r '.type')
+#  NODE_CHILDREN_COUNT=$(echo "$NODE_JSON" | jq -r '.nodes | length')
+#  NODE_FIRST_FOCUS=$(echo "$NODE_JSON" | jq -r '.focus[0]')
+#  NODE_CHILD_IDS=$(echo "$NODE_JSON" | jq -r '.nodes[].id')
+#  echo ""
+#  echo "000000000000000000 NODE_ORIENTATION->$NODE_ORIENTATION<-"
+#  echo "000000000000000000 NODE_TYPE->$NODE_TYPE<-"
+#  echo "000000000000000000 NODE_CHILDREN_COUNT->$NODE_CHILDREN_COUNT<-"
+#  echo "000000000000000000 NODE_FIRST_FOCUS->$NODE_FIRST_FOCUS<-"
+#  echo "000000000000000000 NODE_CHILD_IDS->$NODE_CHILD_IDS<-"
+}
+
+find_parent_split() {
+  if [ "$NODE_ID" -lt 0 ]; then
+    return 0
+  fi
+
+  find_node "$I3_TREE" "$NODE_ID"
+
+  if [ "$NODE_ORIENTATION" = "$ORIENTATION" ] && [ "$NODE_CHILDREN_COUNT" -gt 1 ]; then
+    return 0
+  fi
+  if [ "$NODE_TYPE" = "workspace" ]; then
+    NODE_ID=-1
+    return 0
+  fi
+
+  find_parent_id "$I3_TREE" "$NODE_ID"
+  NODE_ID=$PARENT_ID
+  find_parent_split
+}
+
+is_focused_subtree() {
+  FOUND_ID=$(echo "$I3_TREE" | jq -r --argjson sid $SUBTREE_ID '. | select(.id == $sid) | { nodes: [.] } | recurse(.nodes[]) | select(.focused == true) | .id')
+  if [ "$FOUND_ID" = "$FOCUSED_ID" ]; then
+    IS_FOCUSED_SUBTREE=true
+  else
+    IS_FOCUSED_SUBTREE=false
+  fi
+}
+
+find_next_node_id() {
+  find_node "$I3_TREE" "$NODE_ID"
+  find_focused_id "$I3_TREE"
+  FOCUSED_FOUND=false
+  NEXT_NODE_ID=-1
+  for CHILD_ID in $NODE_CHILD_IDS
+  do
+    if [ $FOCUSED_FOUND = true ]; then
+      NEXT_NODE_ID=$CHILD_ID
+      return 0
+    fi
+    if [ $NEXT_NODE_ID -lt 0 ]; then
+      NEXT_NODE_ID=$CHILD_ID # in case focused child is at the end of list take id from head
+    fi
+
+    SUBTREE_ID=$CHILD_ID
+    is_focused_subtree
+    FOCUSED_FOUND=$IS_FOCUSED_SUBTREE
+  done
+}
+
+find_focusable() {
+  find_node "$I3_TREE" "$NODE_ID"
+  if [ $NODE_CHILDREN_COUNT -lt 1 ]; then
+    return 0
+  fi
+  NODE_ID=$NODE_FIRST_FOCUS
+  find_focusable
+}
+
+cycle_windows() {
+  get_orientation "$DIRECTION"
+  get_direction_shift "$DIRECTION"
+  I3_TREE=$(i3-msg -t get_tree | jq 'recurse(.nodes[])')
+
+  find_focused_parent_id "$I3_TREE"
+  NODE_ID=$FOCUSED_PARENT_ID
+
+  find_parent_split
+  if [ $NODE_ID -lt 0 ]; then
+    return 0
+  fi
+
+  find_next_node_id
+  NODE_ID=$NEXT_NODE_ID
+  find_focusable
+}
+
+print_help() {
+  printf "usage: i3-cycle [-h] {up,down,left,right}\n\n"
+  printf "positional arguments:\n"
+  printf "  {up,down,left,right}\n"
+  printf "                        Direction to put the focus on\n"
+}
+
+while :; do
+  case $1 in
+    -h|-\?|--help)
+      print_help
+      exit 0
+      ;;
+    up)
+      DIRECTION="up"
+      break
+      ;;
+    down)
+      DIRECTION="down"
+      break
+      ;;
+    left)
+      DIRECTION="left"
+      break
+      ;;
+    right)
+      DIRECTION="right"
+      break
+      ;;
+    ?*)
+      print_help
+      break
+      ;;
+    *)
+      print_help
+      break
+  esac
+done
+
+command -v i3-msg > /dev/null || printf "i3-msg command required but not detected"
+command -v jq > /dev/null || printf "jq command required but not detected"
+
+START=$(date +%s.%N)
+
+cycle_windows
+[ $NODE_ID -lt 0 ] || i3-msg '[con_id="'$NODE_ID'"] focus'
+
+END=$(date +%s.%N)
+DIFF=$(echo "$END - $START" | bc)
+echo "time spent: $DIFF"
+

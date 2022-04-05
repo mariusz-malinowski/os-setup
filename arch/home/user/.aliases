@@ -1,7 +1,8 @@
 #!/bin/sh
 
+  #ll='ls -alFh --color=auto --group-directories-first' \
 alias \
-  ll='ls -alFh --color=auto --group-directories-first' \
+  ll='exa -alg --group-directories-first' \
   ls='ls -alFh --color=auto --group-directories-first' \
   grep='grep --color=auto' \
   fgrep='fgrep --color=auto' \

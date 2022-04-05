@@ -28,3 +28,6 @@ fi
 
 [ -s "$HOME/.bashrc_aux" ] && source $HOME/.bashrc_aux
 
+command -v fzf &> /dev/null && source /usr/share/fzf/key-bindings.bash
+command -v fzf &> /dev/null && source /usr/share/fzf/completion.bash
+

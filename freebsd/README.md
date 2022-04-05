@@ -139,6 +139,12 @@ cp ${REPO_PATH}/usr/local/etc/X11/xorg.conf.d/90-rog-pg278q.conf /usr/local/etc/
 cp ${REPO_PATH}/usr/local/etc/X11/xorg.conf.d/20-amdgpu.conf /usr/local/etc/X11/xorg.conf.d/
 ```
 
+## LiveCD writeable disk
+```console
+fsck -y
+mount -u /
+```
+
 ## Access encrypted ZFS disk from Live-CD / Live-USB
 Boot from USB into Multi-user and choose Live-CD, user `root`, no password.
 ```console
@@ -164,6 +170,11 @@ zfs mount -a
 # Mount missing parts, e.g.:
 zfs mount zroot/ROOT/default
 ```
+## Files to update
+/boot/loader.conf
+/etc/rc.conf
+/etc/sysctl.conf
+/etc/wpa_supplicant.conf
 
 ## Useful commands
 sysctl net.wlan.devices
