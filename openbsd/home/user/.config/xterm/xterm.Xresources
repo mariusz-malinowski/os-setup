@@ -1,0 +1,14 @@
+xterm.termName: xterm-256color
+xterm*loginShell:true
+xterm*background: black
+xterm*foreground: gray
+xterm*faceName: "Noto Mono"
+xterm*faceSize: 11
+xterm*vt100.locale: false
+xterm*vt100.utf8: true
+xterm*vt100.on3Clicks: regex [^[:space:],()<>'"]+
+xterm*vt100.on4Clicks: regex [^[:sapce:]]+
+xterm*vt100.on5Clicks: line
+
+xft.antialias: true
+Xft.antialias: true

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+alias \
+  ll="ls -alFh" \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -iv" \
+  bc="bc -ql" \
+  mkdir="mkdir -p" \
+  kb="setxkbmap pl,de -option grp:alt_space_toggle -option compose:rctrl -option ctrl:nocaps"
+
+function mv {
+  if [ "$#" -ne 1 ]; then
+    command mv "$@"
+    return
+  fi
+  if [ ! -f "$1" ]; then
+    command file "$@"
+    return
+  fi
+
+  read -ei "$1" newfilename
+  mv -v "$1" "$newfilename"
+}
+
