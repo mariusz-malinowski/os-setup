@@ -3,17 +3,6 @@
 [ -f "$HOME/.config/.aliases" ] && . $HOME/.config/.aliases
 export PATH
 
-export WM="i3wm"
-export EDITOR="vim"
-export TERMINAL="xterm"
-export BROWSER="firefox"
-export PAGER="less"
-export FILE="spacefm"
-export READER="zathura"
-export COLORTERM="truecolor"
-export FONT_SIZE=11
-export MAIN_MONITOR="LVDS-1"
-
 export HISTFILE="$HOME/.config/ksh/.ksh_history"
 export HISTSIZE=99999
 
@@ -27,5 +16,17 @@ unset  LC_ALL
 export LANG=en_US.UTF-8
 export LC_MESSAGES=C
 export LC_TIME=pl_PL.UTF-8
+
+export WM="i3wm"
+export I3_STATUS_COMMAND="i3status -c $XDG_CONFIG_HOME/i3status/i3status.conf"
+export EDITOR="vim"
+export TERMINAL="xterm"
+export BROWSER="firefox"
+export PAGER="less"
+export FILE="spacefm"
+export READER="zathura"
+export COLORTERM="truecolor"
+export FONT_SIZE=11
+export MAIN_MONITOR="LVDS-1"
 
 export ENV="$HOME/.profile"

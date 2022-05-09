@@ -54,7 +54,7 @@ rofi.show-icons:                     true
 ! rofi.window-format:                  {w}    {c}   {t}
 ! rofi.click-to-exit:                  true
 ! rofi.show-match:                     true
-rofi.theme:                          ~/.config/rofi/gruvbox-dark.rasi
+rofi.theme:                          ~/.config/rofi/rofi-gruvbox-dark.rasi
 ! rofi.color-normal:                   
 ! rofi.color-urgent:                   
 ! rofi.color-active:                   

@@ -6,6 +6,7 @@
 xrdb -merge <<EOF
 i3wm.main_monitor: $MAIN_MONITOR
 i3wm.font_size: $FONT_SIZE
+i3wm.status_command: $I3_STATUS_COMMAND
 EOF
 
 # check man xkeyboard-config
@@ -25,7 +26,7 @@ xsetroot -solid "#333333" ; # Set background color
 nitrogen --restore
 pgrep -x picom  > /dev/null || picom --config $XDG_CONFIG_HOME/picom/picom.conf &
 pgrep -x dunst  > /dev/null || dunst &
-pgrep -x sxhkd > /dev/null || sxhkd -c $XDG_CONFIG_HOME/sxhkd/sxhkd.conf $XDG_CONFIG_HOME/sxhkd/i3wm-sxhkd.conf &
+pgrep -x sxhkd > /dev/null || sxhkd -c $XDG_CONFIG_HOME/sxhkd/sxhkd.conf $XDG_CONFIG_HOME/sxhkd/sxhkd-i3wm.conf &
 # mkdir -p $XDG_DATA_HOME/i3wm
 # START_DATE="$(date +%Y%m%d%H%M%S)"
 # echo "Started at $DATE" >> $XDG_DATA_HOME/i3wm/i3wm.$(echo $START_DATE).log
