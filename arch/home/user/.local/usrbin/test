@@ -1,0 +1,82 @@
+#!/bin/sh
+
+
+START1=$(date +%s.%N)
+
+#  echo '{"imie": "ania"}' | jq '.'
+echo '{"foo": 0}' | jq .
+
+END1=$(date +%s.%N)
+DIFF1=$(echo "$END1 - $START1" | bc)
+echo "yyyyyyyyyyyyyyyyy: $DIFF1"
+
+
+NODE_ID=94318818448944
+
+
+START1=$(date +%s.%N)
+
+  I3_TREE=$(i3-msg -t get_tree | jq 'recurse(.nodes[])')
+
+END1=$(date +%s.%N)
+DIFF1=$(echo "$END1 - $START1" | bc)
+echo "aaaaaaaaaaaaaaaaa: $DIFF1"
+
+
+START2=$(date +%s.%N)
+
+  NODE_JSON=$(echo "$I3_TREE" | jq --argjson id "$NODE_ID" '. | select(.id == $id) | {orientation: .orientation, type: .type, nodes_length: .nodes | length, first_focus: .focus[0], child_ids: [.nodes[].id] | join(" ")}')
+
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "bbbbbbbbbbbbbbbbb: $DIFF2"
+
+
+echo ""
+echo "OOOOOOOOOOOOO: $NODE_JSON"
+echo ""
+
+START3=$(date +%s.%N)
+
+#  echo "OOOOOOOOOOOOOO $NODE_JSON"
+START2=$(date +%s.%N)
+  NODE_ORIENTATION=$(echo "$NODE_JSON" | jq -r '.orientation')
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "xxxxxxxxxxxxxxxxx: $DIFF2"
+START2=$(date +%s.%N)
+  NODE_TYPE=$(echo "$NODE_JSON" | jq -r '.type')
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "xxxxxxxxxxxxxxxxx: $DIFF2"
+START2=$(date +%s.%N)
+  NODE_CHILDREN_COUNT=$(echo "$NODE_JSON" | jq -r '.nodes_length')
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "xxxxxxxxxxxxxxxxx: $DIFF2"
+START2=$(date +%s.%N)
+  NODE_FIRST_FOCUS=$(echo "$NODE_JSON" | jq -r '.first_focus')
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "xxxxxxxxxxxxxxxxx: $DIFF2"
+START2=$(date +%s.%N)
+  NODE_CHILD_IDS=$(echo "$NODE_JSON" | jq -r '.child_ids')
+END2=$(date +%s.%N)
+DIFF2=$(echo "$END2 - $START2" | bc)
+echo "xxxxxxxxxxxxxxxxx: $DIFF2"
+
+#  NODE_ORIENTATION=$(echo "$NODE_JSON" | jq -r '.orientation')
+#  NODE_TYPE=$(echo "$NODE_JSON" | jq -r '.type')
+#  NODE_CHILDREN_COUNT=$(echo "$NODE_JSON" | jq -r '.nodes | length')
+#  NODE_FIRST_FOCUS=$(echo "$NODE_JSON" | jq -r '.focus[0]')
+#  NODE_CHILD_IDS=$(echo "$NODE_JSON" | jq -r '.nodes[].id')
+#  echo ""
+#  echo "000000000000000000 NODE_ORIENTATION->$NODE_ORIENTATION<-"
+#  echo "000000000000000000 NODE_TYPE->$NODE_TYPE<-"
+#  echo "000000000000000000 NODE_CHILDREN_COUNT->$NODE_CHILDREN_COUNT<-"
+#  echo "000000000000000000 NODE_FIRST_FOCUS->$NODE_FIRST_FOCUS<-"
+#  echo "000000000000000000 NODE_CHILD_IDS->$NODE_CHILD_IDS<-"
+
+END3=$(date +%s.%N)
+DIFF3=$(echo "$END3 - $START3" | bc)
+echo "ccccccccccccccccc: $DIFF3"
