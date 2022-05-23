@@ -1,7 +1,6 @@
 #!/bin/sh
 
 [ -f  "$HOME/.config/xterm/xterm.Xresources" ] && xrdb -merge $HOME/.config/xterm/xterm.Xresources
-[ -f  "$HOME/.config/rofi/rofi.Xresources" ] && xrdb -merge $HOME/.config/rofi/rofi.Xresources
 
 xrdb -merge <<EOF
 i3wm.main_monitor: $MAIN_MONITOR
