@@ -1,4 +1,7 @@
+Xcursor.size: 48
+
 Xft.dpi: 96
+
 URxvt.font: xft:JetBrains Mono Medium:size=12
 URxvt.boldFont: xft:JetBrains Mono Medium:size=12
 URxvt.scrollBar: false

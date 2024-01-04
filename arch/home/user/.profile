@@ -17,6 +17,8 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES=C
 export LC_TIME=pl_PL.UTF-8
 
+export SDL_SOUNDFONTS=/usr/share/soundfonts/FluidR3_GM.sf2 
+
 # export HISTFILE="${XDG_DATA_HOME}/bash/history"
 # export LESSHISTFILE="${XDG_DATA_HOME}/.less-history"
 
@@ -27,7 +29,6 @@ export DMENU_FONT="pango:monospace:bold:pixelsize=24"
 export SUDO_ASKPASS="$LOCAL_BIN/dmenu-sudoaskpass"
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-  #pgrep bspwm || startx "$XDG_CONFIG_HOME/X11/xinitrc"
-  pgrep -x i3 || pgrep -x bspwm || startx
+  pgrep -x i3 || startx
 fi
 

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ -d "/proc/acpi/button/lid" ]; then
+  # legacy var
+  MAIN_MONITOR="eDP-1"
+  XRANDR=$(xrandr)
+  if echo $XRANDR | grep "HDMI-2 connected" &> /dev/null ; then
+    xrandr --newmode "3440x1440_30.00"  196.25  3440 3600 3952 4464  1440 1443 1453 1468 -hsync +vsync 
+    xrandr --addmode HDMI-2 3440x1440_30.00 
+    xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --mode 3440x1440_30.00 --primary --right-of eDP-1
+  else
+    xrandr --output eDP-1 --mode 1920x1080 --primary
+  fi
+  unset XRANDR
+else
+  xrandr --output DisplayPort-0 --primary --mode 2560x1440 --rate 165 --primary
+fi
+
+nitrogen --restore
+

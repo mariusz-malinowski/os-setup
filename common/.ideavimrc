@@ -2,3 +2,4 @@ source ~/.vimrc
 set showmode
 :noremap $ $
 :noremap 0 0
+set clipboard=unnamedplus,unnamed,ideaput

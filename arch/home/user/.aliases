@@ -1,6 +1,5 @@
 #!/bin/sh
 
-  #ll='ls -alFh --color=auto --group-directories-first' \
 alias \
   ll='exa -alg --group-directories-first' \
   ls='ls -alFh --color=auto --group-directories-first' \
@@ -14,19 +13,13 @@ alias \
 	rm="rm -vI" \
 	bc="bc -ql" \
 	mkdir="mkdir -pv" \
-  kb="setxkbmap pl,de -option grp:alt_space_toggle -option compose:rctrl   -option ctrl:nocaps"
+  kb="setxkbmap pl,de -option grp:alt_space_toggle -option compose:rctrl -option ctrl:nocaps" \
+  gp='git pull --rebase --autostash' \
+  ga='git add . && git commit --amend --no-edit'  \
+  gf='git push --force'
 
-# sudo not required for some system commands
-#for x in mount umount sv pacman updatedb su ; do
-#  alias $x="sudo $x"
-#done
 
-# Put this function to your .bashrc file.
-# Usage: mv oldfilename
-# If you call mv without the second parameter it will prompt you to edit the filename on command line.
-# Original mv is called when it's called with more than one argument.
-# It's useful when you want to change just a few letters in a long name.
-function mv() {
+function m() {
   if [ "$#" -ne 1 ]; then
     command mv "$@"
     return
