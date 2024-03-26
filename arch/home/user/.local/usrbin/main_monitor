@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+XRANDR=$(xrandr)
+if echo $XRANDR | grep "eDP-1 connected" &> /dev/null ; then
+  echo "eDP-1"
+else
+  echo $(echo $XRANDR | grep -Eo "([a-zA-Z0-9]|-)+ connected" | head -n 1 | grep -Eo "([a-zA-Z0-9]|-)+" | head -n 1)
+fi
