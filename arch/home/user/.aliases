@@ -17,7 +17,12 @@ alias \
   gp='git pull --rebase --autostash' \
   ga='git add . && git commit --amend --no-edit'  \
   gf='git push --force'
-
+  pacman_list_all="pacman -Qe" \
+  pacman_list_foreign="pacman -Qm" \
+  pacman_list_native="pacman -Qn" \
+  pacman_list_explicit_native="pacman -Qent" \
+  pacman_orphans="pacman -Qtdq" \
+  pacman_remove_orphans="pacman -Rs $(pacman -Qtdq)"
 
 function m() {
   if [ "$#" -ne 1 ]; then

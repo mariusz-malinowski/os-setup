@@ -6,7 +6,8 @@ print_git_branch() {
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='\[\e[1;m\][\[\e[m\]\[\e[32m\]\D{%Y-%m-%d}\[\e[m\] \[\e[34m\]\D{%H:%M:%S}\[\e[m\]\[\e[1;m\]]\[\e[m\] \[\e[m\]\[\e[36m\]\w\[\e[m\]\[\e[1;35m\]$(print_git_branch)\[\e[m\] \n\[\e[1;34m\]λ>\[\e[m\] '
+PS0="\[\e[m\]"
+PS1='\[\e[1;m\][\[\e[m\]\[\e[32m\]\D{%Y-%m-%d}\[\e[m\] \[\e[34m\]\D{%H:%M:%S}\[\e[m\]\[\e[1;m\]]\[\e[m\] \[\e[m\]\[\e[36m\]\w\[\e[m\]\[\e[1;35m\]$(print_git_branch)\[\e[m\] \n\[\e[1;34m\]λ>\[\e[m\] \[\e[33m\]'
 HISTSIZE=99999
 HISTFILESIZE=999999
 HISTCONTROL=ignoredups:erasedups
