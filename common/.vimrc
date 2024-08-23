@@ -20,37 +20,31 @@ filetype plugin indent off
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " Use :PlugInstall in vim
 call plug#begin('~/.vim/plugged')
-
-  Plug 'junegunn/fzf'
-  Plug 'scrooloose/nerdtree'
-  Plug 'scrooloose/nerdcommenter', { 'on': 'NERDTreeToggle' }
-  Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-  Plug 'vim-airline/vim-airline'
-  Plug 'w0rp/ale'
+  " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) 
+  Plug 'dense-analysis/ale'
+  " A Vim color scheme reproduction of the official JetBrains IDE Darcula theme
+  Plug 'doums/darcula'
+  " Distraction-free writing in Vim
+  Plug 'junegunn/goyo.vim'
+  " Hyperfocus-writing in Vim
+  Plug 'junegunn/limelight.vim'
+  " A tree explorer plugin for vim
+  Plug 'preservim/nerdtree'
+  " Vim plugin for intensely nerdy commenting powers
+  Plug 'preservim/nerdcommenter'
+  " Highlight the exact differences, based on characters and words
+  Plug 'rickhowe/diffchar.vim'
+  " A collection of language packs for Vim
+  Plug 'sheerun/vim-polyglot'
+  " A premier Vim plugin for Git
   Plug 'tpope/vim-fugitive'
+  " All about 'surroundings': parentheses, brackets, quotes, XML tags, and more
   Plug 'tpope/vim-surround'
-
-
-"   if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"   else
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-"   endif
-"   let g:deoplete#enable_at_startup = 1
-
-
-  " Run following:
-  " sudo apt install ack-grep
-  " sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
-  " sudo apt install silversearcher-ag
-  Plug 'mileszs/ack.vim' 
-  " Use ag instead of ack, if ag exists
-  if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-  endif
-
+  " Lean & mean status/tabline for vim
+  Plug 'vim-airline/vim-airline'
+  " A plugin of NERDTree showing git status
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+ 
 call plug#end()
 
 " turn filetype detection, indent scripts and filetype plugins on and syntax highlighting too
@@ -64,7 +58,7 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " highlight current line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
+hi CursorLine cterm=NONE ctermbg=16 ctermfg=NONE
 
 " display line numbers
 set number
@@ -114,10 +108,6 @@ let mapleader = "\<space>"
 " :cmap - Display command-line mode maps
 " :omap - Display operator pending mode maps
 
-" Press F3 to insert date
-nmap <F3> i<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
-
 " fix navigation for word-wrapped multiline text
 nmap j gj
 vmap j gj
@@ -138,6 +128,18 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" move lines
+nnoremap <Esc>[j :m .+1<CR>
+nnoremap <Esc>[k :m .-2<CR>
+inoremap <C-j> <Esc>:m .+1<CR>
+inoremap <C-k> <Esc>:m .-2<CR>
+vnoremap <C-j> :m '>+1<CR>
+vnoremap <C-k> :m '<-2<CR>
+
+" press F3 to insert date
+nmap <F3> i<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
+
 " cycle buffers
 nmap <leader>n :bnext<CR>
 nmap <leader>p :bprev<CR>
@@ -150,9 +152,18 @@ nmap <leader><Left> :bprev<CR>
 nmap <leader><Up> <C-w>W
 nmap <leader><Down> <C-w>w
 
-" Plugin mappings:
+" plugin mappings:
 nmap <leader>f :Ack! 
 nmap <leader>1 :NERDTreeToggle<CR>
 " nmap ; :CtrlPBuffer<CR>
 
+" plasticboy/vim-markdown
+autocmd FileType markdown let b:sleuth_automatic=0
+autocmd FileType markdown set conceallevel=0
+autocmd FileType markdown normal zR
+let g:vim_markdown_frontmatter=1
+
+" iamcco/markdown-preview.nvim
+let g:mkdp_refresh_slow=1
+let g:mkdp_markdown_css='~/.local/lib/github-markdown-css/github-markdown.css'
 
