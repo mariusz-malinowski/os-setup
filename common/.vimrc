@@ -232,8 +232,10 @@ nmap <leader><Down> <C-w>w
 
 " plugin mappings:
 nmap <leader>f :Ack! 
-nmap <leader>1 :NERDTreeToggle<CR>
+execute "set <A-1>=\e1"
+nmap <A-1> :NERDTreeToggle<CR>
 " nmap ; :CtrlPBuffer<CR>
+" 
 
 " plasticboy/vim-markdown
 autocmd FileType markdown let b:sleuth_automatic=0
