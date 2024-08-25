@@ -1,22 +1,12 @@
-" vim tips:
+" VIM TIPS:
 " :so ~/.vimrc ; :source
-" ctrl-z ; jobs ; fg %job
-" https://statico.github.io/vim.html
-" https://statico.github.io/vim2.html
-" https://statico.github.io/vim3.html
+" Ctrl+z ; jobs ; fg %job
+" Ctrl+] ; go to defnition
+" Ctrl+O ; takes to the previous location
+" :set all ; shows all set variables
 " ===================================
 
-" turn off compatibility mode with vi
-" set nocompatible
-" force vim to use 256 colors
-" set t_Co=256
-" set fileencoding=utf-8
-" set encoding=utf-8
-
-
-" https://github.com/junegunn/vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" Use :PlugInstall in vim
 call plug#begin('~/.vim/plugged')
 
   " A Vim plugin which shows git diff markers in the sign column and stages/previews/undoes hunks and partial hunks.
@@ -27,8 +17,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'derekwyatt/vim-fswitch'
   " Vim plugin for pulling in C++ function prototypes into implementation files
   Plug 'derekwyatt/vim-protodef'
-  " A Vim color scheme reproduction of the official JetBrains IDE Darcula theme
-  Plug 'doums/darcula'
   " Vim script for text filtering and alignment
   Plug 'godlygeek/tabular'
   " Vim plugin, insert or delete brackets, parens, quotes in pair
@@ -66,114 +54,51 @@ call plug#begin('~/.vim/plugged')
  
 call plug#end()
 
-" turn filetype detection off and, even if it's not strictly necessary, disable loading of indent scripts and filetype plugins
-" filetype off
-" turn filetype detection, indent scripts and filetype plugins on and syntax highlighting too
-filetype plugin indent on
-syntax on
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au BufNewFile,BufFilePre,BufRead *.ex set filetype=elixir
-au BufNewFile,BufFilePre,BufRead *.exs set filetype=elixir
-
-" dark or light
-set background=dark
-" colorscheme darcula
-colorscheme hybrid_material
-hi Normal guibg=NONE ctermbg=NONE
-
-" turn off compatibility mode with vi
-set nocompatible
-" force vim to use 256 colors
-set t_Co=256
-set fileencoding=utf-8
-set encoding=utf-8
-" highlight current line
-set cursorline
-hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
-" display line numbers
-set number
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-" change gutter column width
-set numberwidth=4
-" don't wrap lines
-"set wrap!
-set linebreak
-" use the number column for the text of wrapped lines
-set cpoptions+=n
 set autoindent
-" no of spaces for tab
-set tabstop=2
-set softtabstop=2
-" no of spaces for indentation
-set shiftwidth=2
-" insert spaces for tab button
-set expandtab
+set background=dark                         " dark or light
+set clipboard=unnamedplus                   " use clipboard as the default register; pacman -S gvim; `vim --version | grep clipboard` => should be: +clipboard or +xterm_clipboard
+set cmdheight=2                             " Give more space for displaying messages.
+set cpoptions+=n                            " use the number column for the text of wrapped lines
+set cursorline                              " highlight current line
+set encoding=utf-8
+set expandtab                               " insert spaces for tab button
+set fileencoding=utf-8
+set hidden                                  " hides buffer instead of closing it
+set hlsearch                                " highlight search matches
+set ignorecase                              " ignore case for search
+set incsearch                               " show the next match while entering a search
+set linebreak
+set mouse=a                                 " Enable mouse drag on window splits
+set nocompatible                            " turn off compatibility mode with vi
+set number                                  " display line numbers
+set numberwidth=4                           " change gutter column width
+set omnifunc=syntaxcomplete#Complete
+set path+=$PWD/**                           " set path to be used with :find
+set scrolloff=4                             " keep at least 4 lines at the bottom and top; to keep cursor vertically centered: set scrolloff=999
+set shiftwidth=2                            " no of spaces for indentation
+set smartcase                               " if a search pattern contains an upper case letter, it will be case sensitive
 set smarttab
-" hides buffer instead of closing it
-set hidden
-" use the clipboard as the default register (in linux)
-" check first: vim --version | grep clipboard => result should be: +clipboard or +xterm_clipboard
-" also install packages vim-gtk or vim-gnome or vim-X11
-set clipboard=unnamedplus
-" keep the cursor vertically centered
-" set scrolloff=999
-" keep at least 4 lines at the bottom and top
-set scrolloff=4
-" show the next match while entering a search
-set incsearch
-" ignore case for search
-set ignorecase
-" if a search pattern contains an upper case letter, it will be case sensitive
-set smartcase
-" highlight search matches
-set hlsearch
-" Give more space for displaying messages.
-set cmdheight=2
-" Set terminal size
-set termwinsize=12x0
-" Always split below
-set splitbelow
-" Enable mouse drag on window splits
-set mouse=a
-" use space as the map leader
+set softtabstop=2
+set splitbelow                              " Always split below
+set t_Co=256                                " force vim to use 256 colors
+set tabstop=2                               " no of spaces for tab
+set tags=tags
+set termwinsize=12x0                        " Set terminal size
+"set wrap!                                   " don't wrap lines
+
+syntax on                                   " Enable syntax highlighting
+filetype plugin indent on                   " Enable filetype detection, load ftplugin, and load indent
+colorscheme hybrid_material
+highlight Normal guibg=NONE ctermbg=NONE
+
+"au FileType htm,html,xhtml setl ofu=htmlcomplete#CompleteTags
+"au FileType css setl ofu=csscomplete#CompleteCSS
+"au FileType c setl ofu=ccomplete#CompleteCpp
+"au FileType rb,ruby,eruby setl ofu=rubycomplete#Complete
+"au FileType php setl ofu=phpcomplete#CompletePHP
+
+" TODO: remove leader
 let mapleader = "\<space>"
-
-
-" Plug 'preservim/nerdtree'
-let NERDTreeShowBookmarks = 1   " Show the bookmarks table
-let NERDTreeShowHidden = 1      " Show hidden files
-let NERDTreeShowLineNumbers = 0 " Hide line numbers
-let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
-let NERDTreeWinPos = "left"     " Panel opens on the left side
-let NERDTreeWinSize = 31        " Set panel width to 31 columns
-
-
-" Plug 'preservim/tagbar'
-" Focus the panel when opening it
-let g:tagbar_autofocus = 1
-" Highlight the active tag
-let g:tagbar_autoshowtag = 1
-" Make panel vertical and place on the right
-let g:tagbar_position = 'botright vertical'
-" Mapping to open and close the panel
-nmap <F8> :TagbarToggle<CR>
-
-
-" Plug 'derekwyatt/vim-fswitch'
-au! BufEnter *.cpp let b:fswitchdst = 'hpp,h'
-au! BufEnter *.h let b:fswitchdst = 'cpp,c'
-nmap <leader>z :vsplit <bar> :wincmd l <bar> :FSRight<CR>
-
-" Plug 'derekwyatt/vim-protodef'
-" Pull in prototypes
-nmap <buffer> <silent> <leader> ,PP
-" Pull in prototypes without namespace definition"
-nmap <buffer> <silent> <leader> ,PN
-
-
-" Plug ''
-let g:alchemist#elixir_erlang_src = "/home/marm/repos/ex"
-
 
 " KEY MAPS:
 " :map - normal, visual, select and operator pending modes
@@ -237,18 +162,65 @@ nmap <A-1> :NERDTreeToggle<CR>
 " nmap ; :CtrlPBuffer<CR>
 " 
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'preservim/nerdtree'
+""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowBookmarks = 1   " Show the bookmarks table
+let NERDTreeShowHidden = 1      " Show hidden files
+let NERDTreeShowLineNumbers = 0 " Hide line numbers
+let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
+let NERDTreeWinPos = "left"     " Panel opens on the left side
+let NERDTreeWinSize = 31        " Set panel width to 31 columns
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'preservim/tagbar'
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Focus the panel when opening it
+let g:tagbar_autofocus = 1
+" Highlight the active tag
+let g:tagbar_autoshowtag = 1
+" Make panel vertical and place on the right
+let g:tagbar_position = 'botright vertical'
+" Mapping to open and close the panel
+nmap <F8> :TagbarToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'derekwyatt/vim-fswitch'
+""""""""""""""""""""""""""""""""""""""""""""""""
+au! BufEnter *.cpp let b:fswitchdst = 'hpp,h'
+au! BufEnter *.h let b:fswitchdst = 'cpp,c'
+nmap <leader>z :vsplit <bar> :wincmd l <bar> :FSRight<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'derekwyatt/vim-protodef'
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Pull in prototypes
+nmap <buffer> <silent> <leader> ,PP
+" Pull in prototypes without namespace definition"
+nmap <buffer> <silent> <leader> ,PN
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug ''
+""""""""""""""""""""""""""""""""""""""""""""""""
+let g:alchemist#elixir_erlang_src = "/home/marm/repos/ex"
+
+""""""""""""""""""""""""""""""""""""""""""""""""
 " plasticboy/vim-markdown
+""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType markdown let b:sleuth_automatic=0
 autocmd FileType markdown set conceallevel=0
 autocmd FileType markdown normal zR
 let g:vim_markdown_frontmatter=1
 
+""""""""""""""""""""""""""""""""""""""""""""""""
 " iamcco/markdown-preview.nvim
+""""""""""""""""""""""""""""""""""""""""""""""""
 let g:mkdp_refresh_slow=1
 let g:mkdp_markdown_css='~/.local/lib/github-markdown-css/github-markdown.css'
 
+""""""""""""""""""""""""""""""""""""""""""""""""
 """ START: fzf
-
+""""""""""""""""""""""""""""""""""""""""""""""""
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -310,3 +282,4 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 """ END: fzf
+""""""""""""""""""""""""""""""""""""""""""""""""
