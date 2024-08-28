@@ -1,0 +1,15 @@
+[Default Applications]
+inode/directory=spacefm-find.desktop;
+image/jpeg=feh.desktop;
+image/png=feh.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+text/plain=gvim.desktop;
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
+
+[Added Associations]
+inode/directory=spacefm-find.desktop;
+image/jpeg=feh.desktop;
+image/png=feh.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+text/plain=gvim.desktop;

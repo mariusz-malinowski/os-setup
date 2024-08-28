@@ -1,7 +1,17 @@
 #!/bin/sh
 
+export WM="i3wm"
+export EDITOR="vim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export PAGER="less"
+export FILE="xfe"
+export READER="zathura"
+export COLORTERM="truecolor"
+export FONT_SIZE=12
+export LOCAL_BIN="$HOME/.local/usrbin"
+
 [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
-[ -f "$HOME/.bindings" ] && source "$HOME/.bindings"
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
 [ -d "$LOCAL_BIN" ] && PATH="$PATH:$LOCAL_BIN"

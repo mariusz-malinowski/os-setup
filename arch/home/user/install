@@ -16,23 +16,7 @@ link_file ".profile"
 link_file ".xinitrc"
 link_file ".Xresources"
 
-cp $REPO_PATH/.bindings $HOME/
-touch "$HOME/.bashrc_aux"
-
-# .config
-[ ! -d $HOME/.config ] && mkdir $HOME/.config
-
-link_file ".config/alacritty"
-link_file ".config/bspwm"
-link_file ".config/gtk-2.0"
-link_file ".config/gtk-3.0"
-link_file ".config/i3blocks"
-link_file ".config/i3wm"
-link_file ".config/mpd"
-link_file ".config/picom"
-link_file ".config/polybar"
-link_file ".config/rofi"
-link_file ".config/sxhkd"
+touch "$HOME/.workrc"
 
 # .local
 [ ! -d $HOME/.local ] && mkdir $HOME/.local

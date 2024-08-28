@@ -1,15 +1,30 @@
 #!/usr/bin/env bash
 
 if [ -d "/proc/acpi/button/lid" ]; then
-  # legacy var
-  export MAIN_MONITOR="eDP-1"
   XRANDR=$(xrandr)
-  if echo $XRANDR | grep "HDMI-2 connected" &> /dev/null ; then
-    xrandr --newmode "3440x1440_30.00"  196.25  3440 3600 3952 4464  1440 1443 1453 1468 -hsync +vsync 
-    xrandr --addmode HDMI-2 3440x1440_30.00 
-    xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --mode 3440x1440_30.00 --primary --right-of eDP-1 && nitrogen --restore
-  else
-    xrandr --output eDP-1 --mode 1920x1080 --primary && nitrogen --restore
+  if echo $XRANDR | grep "eDP-1 connected" &> /dev/null ; then
+    # legacy var
+    export MAIN_MONITOR="eDP-1"
+  fi
+  if echo $XRANDR | grep "eDP-2 connected" &> /dev/null ; then
+    # legacy var
+    export MAIN_MONITOR="eDP-2"
+  fi
+  if [ "$MAIN_MONITOR" = "eDP-1" ]; then
+    if echo $XRANDR | grep "HDMI-2 connected" &> /dev/null ; then
+      xrandr --newmode "3440x1440_30.00"  196.25  3440 3600 3952 4464  1440 1443 1453 1468 -hsync +vsync 
+      xrandr --addmode HDMI-2 3440x1440_30.00 
+      xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --mode 3440x1440_30.00 --primary --right-of eDP-1 && nitrogen --restore
+    else
+      xrandr --output eDP-1 --mode 1920x1080 --primary && nitrogen --restore
+    fi
+  fi
+  if [ "$MAIN_MONITOR" = "eDP-2" ]; then
+    if echo $XRANDR | grep "HDMI-1-1 connected" &> /dev/null ; then
+      xrandr --output eDP-2 --auto --output HDMI-1-1 --auto --primary --right-of eDP-2 && nitrogen --restore
+    else
+      xrandr --output eDP-2 --auto --primary && nitrogen --restore
+    fi
   fi
   unset XRANDR
 else

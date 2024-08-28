@@ -8,6 +8,25 @@ link_file() {
 }
 
 link_file ".ideavimrc"
+link_file ".vimrc"
 
-#link_file ".vimrc"
-#cp -r .vim "${HOME}/"
+# .config
+[ ! -d $HOME/.config ] && mkdir $HOME/.config
+
+REPO_PATH="$(pwd)/home/user"
+link_file ".config/alacritty"
+link_file ".config/gtk-3.0"
+link_file ".config/i3blocks"
+link_file ".config/i3wm"
+link_file ".config/keepassxc"
+link_file ".config/mpd"
+link_file ".config/mpv"
+link_file ".config/neofetch"
+link_file ".config/picom"
+link_file ".config/rofi"
+link_file ".config/sxhkd"
+link_file ".config/xfe"
+link_file ".config/zathura"
+link_file ".config/mimeapps.list"
+link_file ".config/yad.conf"
+
