@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export WM="i3wm"
+export I3_STATUS_COMMAND="i3blocks -c $XDG_CONFIG_HOME/i3blocks/i3blocks.conf"
 export EDITOR="vim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"

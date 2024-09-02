@@ -1,4 +1,25 @@
 #!/bin/sh
+ 
+# man locale
+unset  LC_ALL
+export LC_MESSAGES=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=pl_PL.UTF-8
+export LC_COLLATE=pl_PL.UTF-8
+export LC_MONETARY=pl_PL.UTF-8
+export LANG=en_US.UTF-8
+
+export WM="i3wm"
+export I3_STATUS_COMMAND="i3status -c $XDG_CONFIG_HOME/i3status/i3status.conf"
+export EDITOR="vim"
+export TERMINAL="xterm"
+export BROWSER="firefox"
+export PAGER="less"
+export FILE="spacefm"
+export READER="zathura"
+export FONT_SIZE=11
+export MAIN_MONITOR="LVDS-1"
 
 [ -f  "$HOME/.config/xterm/xterm.Xresources" ] && xrdb -merge $HOME/.config/xterm/xterm.Xresources
 

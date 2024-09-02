@@ -5,6 +5,7 @@
 xrdb -merge <<EOF
 # i3wm.main_monitor: $MAIN_MONITOR
 i3wm.font_size: $FONT_SIZE
+i3wm.status_command: $I3_STATUS_COMMAND
 EOF
 
 # check man xkeyboard-config
