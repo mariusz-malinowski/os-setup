@@ -47,9 +47,11 @@ mods = "Shift"
 [scrolling]
 history = 99999
 
-[shell]
+[terminal.shell]
 args = ["-c", "neofetch && exec bash --login"]
 program = "/bin/bash"
 
 [window]
 opacity = 0.9
+
+[terminal]

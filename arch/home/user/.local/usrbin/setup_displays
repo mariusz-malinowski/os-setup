@@ -15,6 +15,8 @@ if [ -d "/proc/acpi/button/lid" ]; then
       xrandr --newmode "3440x1440_30.00"  196.25  3440 3600 3952 4464  1440 1443 1453 1468 -hsync +vsync 
       xrandr --addmode HDMI-2 3440x1440_30.00 
       xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --mode 3440x1440_30.00 --primary --right-of eDP-1 && nitrogen --restore
+    elif echo $XRANDR | grep "HDMI-A-1-0 connected" &> /dev/null ; then
+      xrandr --output eDP-1 --mode 1920x1080 --output HDMI-A-1-0 --auto --primary --right-of eDP-1 && nitrogen --restore
     else
       xrandr --output eDP-1 --mode 1920x1080 --primary && nitrogen --restore
     fi
